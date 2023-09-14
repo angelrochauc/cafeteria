@@ -19,6 +19,7 @@ Asegúrense de verificar que Xampp tenga PostgreSQL habilitado. Para hacerlo, si
 Coloquen la carpeta principal del proyecto en la carpeta "htdocs", ubicada dentro de la carpeta de Xampp.
 
 Adicionalmente, deben configurar la conexión a la base de datos en cada archivo.
+$conn = pg_connect("host=localhost dbname=konecta_cafe user=postgres password=1234"); // Colocar sus credenciales
 
 El archivo "cafe.sql" contiene las tablas utilizadas y las consultas solicitadas.
 
