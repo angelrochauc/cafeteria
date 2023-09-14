@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Realizar Venta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Realizar Venta</h2>
+    <form action="../acciones/procesar_venta.php" method="post">
+        <label for="nombre_producto">Nombre del Producto:</label>
+        <input type="text" id="nombre_producto" name="nombre_producto" required><br>
+
+
+        <label for="cantidad_vendida">Cantidad:</label>
+        <input type="number" id="cantidad_vendida" name="cantidad_vendida" required><br>
+
+        <input type="submit" value="Realizar Venta">
+    </form>
+
+   
+</body>
+</html>

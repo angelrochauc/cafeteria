@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Producto</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function obtenerDatosProducto() {
+            var idProducto = document.getElementById("id").value;
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        var producto = JSON.parse(xhr.responseText);
+                        llenarCampos(producto);
+                    } else {
+                        alert("Error al obtener los datos del producto.");
+                    }
+                }
+            };
+
+            xhr.open("GET", "../acciones/obtener_producto.php?id=" + idProducto, true);
+            xhr.send();
+        }
+
+        function llenarCampos(producto) {
+            document.getElementById("nombre").value = producto.nombre;
+            document.getElementById("referencia").value = producto.referencia;
+            document.getElementById("precio").value = producto.precio;
+            document.getElementById("stock").value = producto.stock;
+            document.getElementById("fecha_creacion").value = producto.fecha_creacion;
+        }
+    </script>
+</head>
+<body>
+    <h2>Eliminar Producto</h2>
+    <form action="../acciones/eliminar.php" method="post">
+        <label for="id">ID del Producto:</label>
+        <input type="text" id="id" name="id" required><br>
+
+        <label for="nombre">Nombre de Producto:</label>
+        <input type="text" id="nombre" name="nombre" readonly><br>
+
+        <label for="referencia">Referencia:</label>
+        <input type="text" id="referencia" name="referencia" readonly><br>
+
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" readonly><br>
+
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" readonly><br>
+
+        <label for="fecha_creacion">Fecha de Creación:</label>
+        <input type="date" id="fecha_creacion" name="fecha_creacion" readonly><br>
+
+        <input type="button" value="Obtener Datos del Producto" onclick="obtenerDatosProducto()">
+        <input type="submit" value="Eliminar Producto">
+    </form>
+</body>
+</html>
